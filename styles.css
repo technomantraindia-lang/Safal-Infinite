@@ -1036,7 +1036,7 @@ svg {
 }
 
 .about-left:hover > img {
-  transform: translateY(-8px) scale(1.035);
+  transform: scale(1.035);
   filter: saturate(1.08) contrast(1.03);
   box-shadow: 0 24px 48px rgba(16, 18, 21, 0.14);
 }
@@ -1061,7 +1061,7 @@ svg {
 }
 
 .about-left:hover .experience-card {
-  transform: translateY(-6px);
+  transform: none;
   box-shadow: 0 26px 52px rgba(44, 94, 26, 0.26);
 }
 
@@ -1264,7 +1264,7 @@ svg {
 }
 
 .about-right:hover img {
-  transform: translate(-8px, -8px) scale(1.035);
+  transform: scale(1.035);
   filter: saturate(1.08) contrast(1.03);
   box-shadow: 0 24px 48px rgba(16, 18, 21, 0.14);
 }
@@ -2609,6 +2609,35 @@ svg {
   stroke: #ffffff;
 }
 
+.why-choose-section .why-content {
+  transform: none;
+}
+
+.services-kicker,
+.process-kicker,
+.before-after-kicker,
+.why-kicker,
+.testimonial-kicker,
+.faq-kicker,
+.about-content,
+.services-intro h2,
+.booking-process h2,
+.before-after-content,
+.why-content,
+.testimonial-content,
+.faq-content {
+  transform: none;
+  animation: none;
+  transition: none;
+}
+
+.before-after-visual,
+.before-after-visual:hover,
+.appointment-card,
+.appointment-card:hover {
+  transform: none;
+}
+
 @media (max-width: 980px) {
   .why-card-grid {
     grid-template-columns: 1fr;
@@ -2683,11 +2712,10 @@ svg {
   height: 100%;
   object-fit: cover;
   object-position: 40% center;
-  transition: transform 0.55s ease, filter 0.55s ease;
+  transition: filter 0.55s ease;
 }
 
 .testimonial-photo:hover img {
-  transform: scale(1.035);
   filter: saturate(1.06) contrast(1.03);
 }
 
@@ -2732,10 +2760,6 @@ svg {
   animation: testimonialSlide 18s ease-in-out infinite;
 }
 
-.testimonial-cards:hover {
-  animation-play-state: paused;
-}
-
 .testimonial-card {
   position: relative;
   flex: 0 0 var(--testimonial-card-width);
@@ -2744,7 +2768,14 @@ svg {
   border: 1px solid #dedede;
   background: #ffffff;
   overflow: hidden;
-  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+  transition: box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+}
+
+.testimonial-section .reveal-on-scroll.is-visible,
+.testimonial-section .reveal-on-scroll.is-visible:hover,
+.testimonial-card:hover,
+.testimonial-photo:hover img {
+  transform: none;
 }
 
 .testimonial-card::before {
@@ -2758,7 +2789,6 @@ svg {
 }
 
 .testimonial-card:hover {
-  transform: translateY(-8px);
   border-color: #ffad16;
   background: linear-gradient(180deg, #fff7df 0%, #ffffff 64%);
   box-shadow: 0 24px 50px rgba(255, 173, 22, 0.18);
@@ -3472,10 +3502,10 @@ svg {
 }
 
 .appointment-card .booking-form button:hover {
-  transform: translateY(-4px);
-  background: linear-gradient(135deg, #ffd600 0%, #ffad16 48%, #ff8a00 100%);
-  color: #101f2b;
-  box-shadow: 0 20px 36px rgba(255, 138, 0, 0.3);
+  transform: none;
+  background: #071827;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 2px rgba(255, 214, 0, 0.55), 0 16px 30px rgba(7, 24, 39, 0.24);
 }
 
 .appointment-cleaner {
@@ -3620,7 +3650,6 @@ svg {
   border-radius: 50%;
   background: #ffffff;
   color: #ffffff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .footer-social a svg {
@@ -3643,11 +3672,6 @@ svg {
   color: #ff0000;
 }
 
-.footer-social a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 18px rgba(255, 173, 22, 0.22);
-}
-
 .footer-column h2 {
   margin: 0 0 15px;
   color: #ffffff;
@@ -3658,6 +3682,7 @@ svg {
 
 .footer-column a,
 .footer-contact p {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -3666,11 +3691,31 @@ svg {
   font-size: 14px;
   line-height: 1.25;
   font-weight: 600;
-  transition: color 0.2s ease;
+  transition: color 0.24s ease;
+}
+
+.footer-column a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffad16, #ffd600);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 0.24s ease, transform 0.24s ease;
 }
 
 .footer-column a:hover {
   color: #ffad16;
+}
+
+.footer-column a:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .footer-contact svg {
@@ -3707,11 +3752,20 @@ svg {
 
 .footer-bottom a {
   color: rgba(255, 255, 255, 0.78);
-  transition: color 0.2s ease;
+  transition: color 0.24s ease;
 }
 
 .footer-bottom a:hover {
   color: #ffad16;
+}
+
+.site-footer .reveal-on-scroll,
+.site-footer .reveal-on-scroll.is-visible,
+.site-footer .footer-brand,
+.site-footer .footer-column,
+.site-footer .footer-social a,
+.site-footer a {
+  transform: none;
 }
 
 @media (max-width: 980px) {
@@ -3743,5 +3797,58 @@ svg {
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(38px);
+  transition:
+    opacity 0.78s ease,
+    transform 0.78s cubic-bezier(0.2, 0.72, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-left {
+  transform: translateX(-54px);
+}
+
+.reveal-right {
+  transform: translateX(54px);
+}
+
+.reveal-top {
+  transform: translateY(-46px);
+}
+
+.reveal-bottom {
+  transform: translateY(46px);
+}
+
+.reveal-zoom {
+  transform: translateY(32px) scale(0.94);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+}
+
+.reveal-on-scroll.is-visible:not(:hover) {
+  transform: translate(0, 0) scale(1);
+}
+
+.about-left,
+.about-content,
+.about-right,
+.service-tile {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

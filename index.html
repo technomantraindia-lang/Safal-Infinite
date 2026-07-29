@@ -862,6 +862,54 @@
           slider.style.setProperty("--compare-position", `${range.value}%`);
         });
       });
+
+      const revealItems = [
+        [".about-left", "reveal-left"],
+        [".about-right", "reveal-right"],
+        [".process-step", "reveal-zoom"],
+        [".process-button", "reveal-bottom"],
+        [".why-card", "reveal-bottom"],
+        [".testimonial-photo", "reveal-left"],
+        [".faq-list details", "reveal-right"],
+      ];
+
+      revealItems.forEach(([selector, direction]) => {
+        document.querySelectorAll(selector).forEach((element, index) => {
+          element.classList.add("reveal-on-scroll", direction);
+          element.style.setProperty("--reveal-delay", `${Math.min(index * 90, 360)}ms`);
+        });
+      });
+
+      document.querySelectorAll(".service-tile").forEach((card, index) => {
+        const directions = ["reveal-left", "reveal-top", "reveal-right", "reveal-bottom"];
+        card.classList.add("reveal-on-scroll", directions[index % directions.length]);
+        card.style.setProperty("--reveal-delay", `${Math.min(index * 85, 420)}ms`);
+      });
+
+      if (!("IntersectionObserver" in window)) {
+        document.querySelectorAll(".reveal-on-scroll").forEach((element) => {
+          element.classList.add("is-visible");
+        });
+      } else {
+        const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.16,
+          rootMargin: "0px 0px -70px 0px",
+        }
+        );
+
+        document.querySelectorAll(".reveal-on-scroll").forEach((element) => {
+          revealObserver.observe(element);
+        });
+      }
     </script>
   </body>
 </html>
