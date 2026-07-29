@@ -2638,6 +2638,26 @@ svg {
   transform: none;
 }
 
+.about-left,
+.about-right,
+.about-left:hover,
+.about-right:hover,
+.about-left .experience-card,
+.about-left:hover .experience-card {
+  transform: none;
+  animation: none;
+}
+
+.about-left > img,
+.about-right img {
+  animation: none;
+}
+
+.about-left:hover > img,
+.about-right:hover img {
+  transform: scale(1.035);
+}
+
 @media (max-width: 980px) {
   .why-card-grid {
     grid-template-columns: 1fr;
