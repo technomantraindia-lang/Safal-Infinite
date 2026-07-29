@@ -132,6 +132,7 @@ a {
   border-radius: 999px;
   background: #fff;
   white-space: nowrap;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .phone-icon {
@@ -141,6 +142,23 @@ a {
   height: 39px;
   border-radius: 50%;
   background: var(--yellow);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.phone-pill:hover,
+.phone-pill:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(255, 173, 22, 0.5);
+  background: #fff9df;
+  box-shadow: 0 14px 28px rgba(255, 173, 22, 0.18);
+}
+
+.phone-pill:hover .phone-icon,
+.phone-pill:focus-visible .phone-icon {
+  transform: rotate(-12deg) scale(1.08);
+  background: #ffad16;
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(255, 138, 0, 0.28);
 }
 
 svg {
@@ -741,7 +759,7 @@ svg {
 }
 
 .service-card:nth-child(1) img {
-  object-position: 88% center;
+  object-position: center;
 }
 
 .service-card:nth-child(2) img {
@@ -749,7 +767,19 @@ svg {
 }
 
 .service-card:nth-child(3) img {
-  object-position: 88% center;
+  object-position: center;
+}
+
+.service-card:nth-child(4) img {
+  object-position: center;
+}
+
+.service-card:nth-child(5) img {
+  object-position: center;
+}
+
+.service-card:nth-child(6) img {
+  object-position: center;
 }
 
 .service-card:nth-child(2),
@@ -1529,23 +1559,41 @@ svg {
   width: 62px;
   height: 62px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.96);
   color: #ffad16;
-  box-shadow: 0 10px 24px rgba(107, 69, 8, 0.14);
+  border: 1px solid rgba(255, 173, 22, 0.18);
+  box-shadow: 0 12px 26px rgba(107, 69, 8, 0.16);
+  transition: transform 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
 }
 
 .service-icon-badge svg {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.8;
+  stroke-width: 2.1;
+  transition: transform 0.28s ease, stroke 0.28s ease;
 }
 
-.service-icon-badge svg path:first-child {
-  stroke: #1a1d1f;
+.service-icon-badge svg :first-child {
+  stroke: #101827;
+}
+
+.service-tile:hover .service-icon-badge {
+  transform: translateY(-5px) rotate(-3deg);
+  background: #ffad16;
+  color: #ffffff;
+  box-shadow: 0 18px 34px rgba(255, 138, 0, 0.24);
+}
+
+.service-tile:hover .service-icon-badge svg {
+  transform: scale(1.08);
+}
+
+.service-tile:hover .service-icon-badge svg :first-child {
+  stroke: #ffffff;
 }
 
 .service-tile h3 {
