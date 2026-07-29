@@ -62,7 +62,7 @@ a {
   justify-content: center;
   gap: 34px;
   flex: 1 1 auto;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 900;
 }
 
@@ -72,6 +72,7 @@ a {
   white-space: nowrap;
   color: #050505;
   letter-spacing: 0;
+  text-shadow: 0 0 0 currentColor;
   transition: color 0.2s ease;
 }
 
@@ -1496,13 +1497,10 @@ svg {
   animation-delay: 0.24s;
 }
 
-.service-tile:nth-child(4) {
+.service-tile:nth-child(4),
+.service-tile:nth-child(8) {
   animation-name: serviceCardFromBottom;
   animation-delay: 0.36s;
-}
-
-.service-tile:nth-child(5) {
-  grid-column: 4 / span 6;
 }
 
 .service-tile > img {
@@ -1683,8 +1681,7 @@ svg {
     width: min(880px, calc(100% - 36px));
   }
 
-  .service-tile,
-  .service-tile:nth-child(5) {
+  .service-tile {
     grid-column: auto;
   }
 }
