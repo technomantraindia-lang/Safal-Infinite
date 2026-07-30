@@ -14,16 +14,28 @@
   </head>
   <body>
     <header class="site-header">
-      <a href="#" class="brand" aria-label="Clanyeco home">
-        <img src="assets/logo.png" alt="Clanyeco" />
+      <a href="#" class="brand" aria-label="Safal Infinite home">
+        <img src="assets/logo.png" alt="Safal Infinite" />
       </a>
 
       <nav class="main-nav" aria-label="Primary navigation">
         <a href="#" class="active">Home</a>
-        <a href="#">Service</a>
-        <a href="#">About</a>
-        <a href="#">How It Work</a>
-        <a href="#">Contact</a>
+        <div class="nav-dropdown">
+          <a href="pages/service.html" class="nav-dropdown-trigger">Service</a>
+          <div class="dropdown-menu" aria-label="Service menu">
+            <a href="pages/after-build-cleaning.html">After Build Cleaning</a>
+            <a href="pages/regular-cleaning.html">Regular Cleaning</a>
+            <a href="pages/spring-cleaning.html">One Off / Spring Cleaning</a>
+            <a href="pages/move-out-cleaning.html">Move Out / End of Lease Cleaning</a>
+            <a href="pages/carpet-upholstery-cleaning.html">Carpet &amp; Upholstery Cleaning</a>
+            <a href="pages/window-cleaning.html">Window Cleaning</a>
+            <a href="pages/oven-rangehood-cleaning.html">Oven &amp; Rangehood Cleaning</a>
+            <a href="pages/office-cleaning.html">Office Cleaning Services</a>
+          </div>
+        </div>
+        <a href="pages/about.html">About</a>
+        <a href="pages/how-it-work.html">How It Work</a>
+        <a href="pages/contact.html">Contact</a>
       </nav>
 
       <div class="header-actions">
@@ -35,7 +47,7 @@
           </span>
           +61 406 858 679
         </a>
-        <a class="quote-button" href="#">Enquire</a>
+        <a class="quote-button" href="pages/contact.html">Request a Quote</a>
       </div>
     </header>
 
@@ -178,7 +190,7 @@
         </div>
       </section>
 
-      <section class="services-intro" aria-label="Services">
+      <section id="services" class="services-intro" aria-label="Services">
         <p class="services-kicker">Services</p>
         <h2>Where Cleanliness meets<br />Care Services</h2>
       </section>
@@ -199,7 +211,7 @@
                 </svg>
               </span>
               <h3>Regular Cleaning Services</h3>
-              <a href="#" aria-label="View Regular Cleaning Services">
+              <a href="pages/regular-cleaning.html" aria-label="View Regular Cleaning Services">
                 <span>Learn more</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m9 18 6-6-6-6" />
@@ -222,7 +234,7 @@
                 </svg>
               </span>
               <h3>After build Cleaning Service</h3>
-              <a href="#" aria-label="View After build Cleaning Service">
+              <a href="pages/after-build-cleaning.html" aria-label="View After build Cleaning Service">
                 <span>Learn more</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m9 18 6-6-6-6" />
@@ -243,7 +255,7 @@
                 </svg>
               </span>
               <h3>One Off / Spring Cleaning Services</h3>
-              <a href="#" aria-label="View One Off Spring Cleaning Services">
+              <a href="pages/spring-cleaning.html" aria-label="View One Off Spring Cleaning Services">
                 <span>Learn more</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m9 18 6-6-6-6" />
@@ -265,7 +277,7 @@
                 </svg>
               </span>
               <h3>Move Out/End of leaseCleaning Services</h3>
-              <a href="#" aria-label="View Move Out End of leaseCleaning Services">
+              <a href="pages/move-out-cleaning.html" aria-label="View Move Out End of leaseCleaning Services">
                 <span>Learn more</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m9 18 6-6-6-6" />
@@ -287,7 +299,7 @@
                 </svg>
               </span>
               <h3>Carpet &amp; Upholstery Cleaning Services</h3>
-              <a href="#" aria-label="View Carpet and Upholstery Cleaning Services">
+              <a href="pages/carpet-upholstery-cleaning.html" aria-label="View Carpet and Upholstery Cleaning Services">
                 <span>Learn more</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m9 18 6-6-6-6" />
@@ -309,7 +321,7 @@
                 </svg>
               </span>
               <h3>Window Cleaning Services</h3>
-              <a href="#" aria-label="View Window Cleaning Services">
+              <a href="pages/window-cleaning.html" aria-label="View Window Cleaning Services">
                 <span>Learn more</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m9 18 6-6-6-6" />
@@ -331,7 +343,7 @@
                 </svg>
               </span>
               <h3>Oven - Range hood Cleaning Services</h3>
-              <a href="#" aria-label="View Oven Range hood Cleaning Services">
+              <a href="pages/oven-rangehood-cleaning.html" aria-label="View Oven Range hood Cleaning Services">
                 <span>Learn more</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m9 18 6-6-6-6" />
@@ -353,7 +365,7 @@
                 </svg>
               </span>
               <h3>Office Cleaning Services</h3>
-              <a href="#" aria-label="View Office Cleaning Services">
+              <a href="pages/office-cleaning.html" aria-label="View Office Cleaning Services">
                 <span>Learn more</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m9 18 6-6-6-6" />
@@ -788,24 +800,24 @@
 
         <nav class="footer-column" aria-label="Footer quick links">
           <h2>Quick Links</h2>
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Services</a>
-          <a href="#">Gallery</a>
-          <a href="#">Testimonials</a>
-          <a href="#">Contact Us</a>
+          <a href="index.html">Home</a>
+          <a href="pages/about.html">About Us</a>
+          <a href="pages/service.html">Services</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="pages/contact.html">Contact Us</a>
         </nav>
 
         <nav class="footer-column" aria-label="Footer services">
           <h2>Our Services</h2>
-          <a href="#">After Build Cleaning</a>
-          <a href="#">Regular Cleaning</a>
-          <a href="#">One Off / Spring Cleaning</a>
-          <a href="#">Move Out / End of Lease Cleaning</a>
-          <a href="#">Carpet &amp; Upholstery Cleaning</a>
-          <a href="#">Window Cleaning</a>
-          <a href="#">Oven &amp; Rangehood Cleaning</a>
-          <a href="#">Office Cleaning Services</a>
+          <a href="pages/after-build-cleaning.html">After Build Cleaning</a>
+          <a href="pages/regular-cleaning.html">Regular Cleaning</a>
+          <a href="pages/spring-cleaning.html">One Off / Spring Cleaning</a>
+          <a href="pages/move-out-cleaning.html">Move Out / End of Lease Cleaning</a>
+          <a href="pages/carpet-upholstery-cleaning.html">Carpet &amp; Upholstery Cleaning</a>
+          <a href="pages/window-cleaning.html">Window Cleaning</a>
+          <a href="pages/oven-rangehood-cleaning.html">Oven &amp; Rangehood Cleaning</a>
+          <a href="pages/office-cleaning.html">Office Cleaning Services</a>
         </nav>
 
         <div class="footer-column footer-contact">
@@ -834,7 +846,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>©2026 Safal Infinite. All Rights Reserved.</p>
+        <p>&copy;2026 Safal Infinite. All Rights Reserved.</p>
         <div>
           <a href="#">Privacy Policy</a>
           <span>|</span>
@@ -909,5 +921,7 @@
         });
       }
     </script>
+    <script src="quote-popup.js"></script>
   </body>
 </html>
+
