@@ -1142,7 +1142,7 @@ svg {
 .experience-card {
   position: absolute;
   right: -7px;
-  bottom: 0;
+  bottom: -28px;
   width: 320px;
   min-height: 170px;
   display: grid;
@@ -1478,6 +1478,7 @@ svg {
 
   .experience-card {
     right: 0;
+    bottom: -18px;
     width: min(320px, 82%);
   }
 
