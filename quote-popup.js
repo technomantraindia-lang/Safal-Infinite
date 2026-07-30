@@ -43,7 +43,7 @@
           ${field("mail", '<input type="email" name="email" placeholder="Email Address" required />')}
           ${field("phone", '<input type="tel" name="phone" placeholder="Phone Number" required />')}
           ${field("home", '<input type="text" name="suburb" placeholder="Suburb / Location" />')}
-          ${field("briefcase", '<select name="service" required><option value="">Select Cleaning Service</option><option>Regular Cleaning</option><option>After Build Cleaning</option><option>One Off / Spring Cleaning</option><option>Move Out / End of Lease Cleaning</option><option>Carpet & Upholstery Cleaning</option><option>Window Cleaning</option><option>Oven & Rangehood Cleaning</option><option>Office Cleaning Services</option></select>')}
+          ${field("briefcase", '<select name="service" required><option value="">Select Cleaning Service</option><option>Regular Cleaning</option><option>One Off / Spring Cleaning</option><option>Move Out / End of Lease Cleaning</option><option>Carpet & Upholstery Cleaning</option><option>Window Cleaning</option><option>Oven & Rangehood Cleaning</option><option>Office Cleaning Services</option></select>')}
           ${field("list", '<input type="text" name="property" placeholder="Property Type / Size" />')}
           <label class="quote-field quote-wide">${icons.message}<input type="text" name="subject" placeholder="Subject" /></label>
           <label class="quote-field quote-wide">${icons.message}<textarea name="message" placeholder="Message"></textarea></label>
@@ -82,3 +82,4 @@
     closeModal();
   });
 })();
+

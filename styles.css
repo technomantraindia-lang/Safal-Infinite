@@ -806,6 +806,7 @@ svg {
 }
 
 .service-track {
+  --service-loop-offset: 11px;
   display: flex;
   gap: 22px;
   width: max-content;
@@ -840,9 +841,10 @@ svg {
 .service-card > div {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   min-width: 0;
   min-height: 126px;
+  padding-top: 14px;
 }
 
 .service-card:nth-child(1) img {
@@ -888,6 +890,14 @@ svg {
   display: none;
 }
 
+.service-card p {
+  margin: 10px 0 0;
+  color: #5f6067;
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
 .service-card a {
   display: inline-flex;
   align-items: center;
@@ -910,7 +920,7 @@ svg {
   }
 
   to {
-    transform: translateX(calc(-50% - 11px));
+    transform: translateX(calc(-50% - var(--service-loop-offset)));
   }
 }
 
@@ -958,6 +968,7 @@ svg {
   }
 
   .service-track {
+    --service-loop-offset: 8px;
     gap: 16px;
   }
 
@@ -1208,7 +1219,7 @@ svg {
   margin: 0;
   color: #191919;
   font-family: "Times New Roman", Times, serif;
-  font-size: clamp(42px, 3.65vw, 58px);
+  font-size: clamp(36px, 3.2vw, 50px);
   line-height: 1.08;
   font-weight: 400;
   letter-spacing: 0;
@@ -1489,7 +1500,7 @@ svg {
   display: flex;
   width: max-content;
   gap: 34px;
-  padding: 26px 0 28px;
+  padding: 20px 0 22px;
   animation: marqueeScroll 24s linear infinite;
 }
 
@@ -1497,7 +1508,7 @@ svg {
   position: relative;
   flex: 0 0 auto;
   color: #050505;
-  font-size: clamp(27px, 2.2vw, 36px);
+  font-size: clamp(20px, 1.7vw, 28px);
   line-height: 1;
   font-weight: 800;
   letter-spacing: 0;
@@ -1542,7 +1553,7 @@ svg {
   margin: 0 auto;
   color: #191919;
   font-family: "Times New Roman", Times, serif;
-  font-size: clamp(42px, 4.7vw, 72px);
+  font-size: clamp(36px, 4vw, 62px);
   line-height: 1.05;
   font-weight: 400;
   letter-spacing: 0;
@@ -1569,8 +1580,9 @@ svg {
 }
 
 .service-grid {
-  display: grid;
-  grid-template-columns: repeat(24, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 28px;
   width: min(1360px, calc(100% - 64px));
   margin: 0 auto;
@@ -1581,7 +1593,7 @@ svg {
   position: relative;
   display: flex;
   flex-direction: column;
-  grid-column: span 6;
+  flex: 0 1 calc((100% - 84px) / 4);
   min-height: 420px;
   overflow: hidden;
   border-radius: 30px;
@@ -1686,8 +1698,8 @@ svg {
 .service-tile h3 {
   margin: 0;
   color: #050505;
-  font-size: clamp(20px, 1.28vw, 24px);
-  line-height: 1.18;
+  font-size: clamp(18px, 1.12vw, 21px);
+  line-height: 1.2;
   font-weight: 500;
   letter-spacing: 0;
 }
@@ -1811,13 +1823,13 @@ svg {
 
 @media (max-width: 1050px) {
   .service-grid {
-    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
     gap: 24px;
     width: min(880px, calc(100% - 36px));
   }
 
   .service-tile {
-    grid-column: auto;
+    flex-basis: calc((100% - 24px) / 2);
   }
 }
 
@@ -1827,8 +1839,11 @@ svg {
   }
 
   .service-grid {
-    grid-template-columns: 1fr;
     width: min(420px, calc(100% - 28px));
+  }
+
+  .service-tile {
+    flex-basis: 100%;
   }
 
   .service-tile > img {
@@ -1863,7 +1878,7 @@ svg {
   margin: 0 auto 62px;
   color: #191919;
   font-family: "Times New Roman", Times, serif;
-  font-size: clamp(44px, 4.6vw, 72px);
+  font-size: clamp(36px, 4vw, 62px);
   line-height: 1.05;
   font-weight: 400;
   letter-spacing: 0;
@@ -1969,7 +1984,7 @@ svg {
 .process-step h3 {
   margin: 0 0 20px;
   color: #050505;
-  font-size: clamp(27px, 1.9vw, 34px);
+  font-size: clamp(22px, 1.55vw, 28px);
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: 0;
@@ -2177,7 +2192,7 @@ svg {
   margin: 0 0 26px;
   color: #10152b;
   font-family: "Times New Roman", Times, serif;
-  font-size: clamp(44px, 4vw, 66px);
+  font-size: clamp(36px, 3.5vw, 56px);
   line-height: 1.08;
   font-weight: 400;
   letter-spacing: 0;
@@ -2854,7 +2869,7 @@ svg {
   margin: 0 0 52px;
   color: #191919;
   font-family: "Times New Roman", Times, serif;
-  font-size: clamp(42px, 4.7vw, 72px);
+  font-size: clamp(36px, 4vw, 62px);
   line-height: 1.05;
   font-weight: 400;
   letter-spacing: 0;
@@ -3098,7 +3113,7 @@ svg {
   margin: 0 0 26px;
   color: #10152b;
   font-family: "Times New Roman", Times, serif;
-  font-size: clamp(44px, 4.3vw, 72px);
+  font-size: clamp(36px, 3.8vw, 60px);
   line-height: 1.06;
   font-weight: 400;
   letter-spacing: 0;
@@ -3341,7 +3356,7 @@ svg {
   margin: 0 0 42px;
   color: #10152b;
   font-family: "Times New Roman", Times, serif;
-  font-size: clamp(46px, 3.9vw, 68px);
+  font-size: clamp(36px, 3.4vw, 56px);
   line-height: 1.08;
   font-weight: 400;
   letter-spacing: 0;
