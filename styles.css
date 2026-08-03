@@ -17,11 +17,17 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
   background: #ffffff;
   color: var(--ink);
   font-family: "Manrope", Arial, sans-serif;
@@ -607,10 +613,20 @@ svg {
   .main-nav a {
     display: flex;
     align-items: center;
-    min-height: 46px;
-    padding: 12px 14px;
+    min-height: 44px;
+    padding: 10px 14px;
     border-radius: 10px;
     white-space: normal;
+  }
+
+  .main-nav > a,
+  .main-nav > .nav-dropdown {
+    margin: 0 0 6px;
+  }
+
+  .main-nav > a:last-child,
+  .main-nav > .nav-dropdown:last-child {
+    margin-bottom: 0;
   }
 
   .main-nav a::before {
@@ -628,6 +644,7 @@ svg {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
     margin: 0;
     padding: 0;
   }
@@ -647,25 +664,52 @@ svg {
   .dropdown-menu {
     position: static;
     display: grid;
+    width: 100%;
     min-width: 0;
-    margin: 0 0 8px;
-    padding: 4px 0 4px 12px;
-    border: 0;
-    border-left: 3px solid #ffad16;
-    border-radius: 0;
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 1px solid rgba(255, 173, 22, 0.18);
+    border-radius: 12px;
     background: #fffaf0;
     box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: none;
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height 0.24s ease, opacity 0.2s ease, visibility 0.2s ease, margin 0.2s ease, padding 0.2s ease;
+  }
+
+  .nav-dropdown.is-dropdown-open .dropdown-menu {
+    max-height: 520px;
+    margin: 6px 0 2px;
+    padding: 8px;
     opacity: 1;
     visibility: visible;
-    transform: none;
     pointer-events: auto;
   }
 
+  .nav-dropdown.is-dropdown-open .nav-dropdown-trigger::after {
+    transform: rotate(225deg) translate(-2px, -2px);
+  }
+
   .dropdown-menu a {
-    min-height: 40px;
-    padding: 10px 12px;
+    min-height: 38px;
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 9px;
     font-size: 13px;
     font-weight: 800;
+    white-space: normal;
+  }
+
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu,
+  .nav-dropdown.is-dropdown-open .dropdown-menu {
+    left: auto;
+    top: auto;
+    transform: none;
   }
 
   .header-actions {
@@ -5037,9 +5081,132 @@ svg {
   main > .marquee-strip:not(.mobile-hero-marquee) {
     display: none;
   }
+
+  .quote-modal {
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .quote-modal-panel {
+    width: calc(100vw - 20px);
+    max-height: none;
+    margin: 0;
+    border-width: 1px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .quote-modal-main {
+    width: 100%;
+    padding: 26px 16px 18px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .quote-modal-close {
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(7, 23, 44, 0.22);
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  .quote-modal-main h2 {
+    max-width: calc(100% - 52px);
+    margin: 0 52px 10px 0;
+    font-size: 34px;
+    line-height: 1.05;
+  }
+
+  .quote-modal-main > p {
+    max-width: 100%;
+    margin-bottom: 18px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .quote-form {
+    gap: 12px;
+  }
+
+  .quote-field {
+    min-height: 52px;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+
+  .quote-field svg {
+    left: 10px;
+    top: 10px;
+    width: 32px;
+    height: 32px;
+    padding: 7px;
+    border-radius: 10px;
+  }
+
+  .quote-field input,
+  .quote-field select,
+  .quote-field textarea {
+    box-sizing: border-box;
+    min-height: 52px;
+    padding-left: 56px;
+    padding-right: 12px;
+    border-radius: 14px;
+    font-size: 13px;
+  }
+
+  .quote-field select {
+    background:
+      linear-gradient(45deg, transparent 50%, #07172c 50%) right 18px center / 6px 6px no-repeat,
+      linear-gradient(135deg, transparent 50%, #07172c 50%) right 14px center / 6px 6px no-repeat;
+    padding-right: 30px;
+  }
+
+  .quote-field textarea {
+    min-height: 96px;
+    padding-top: 17px;
+  }
+
+  .quote-submit {
+    min-height: 54px;
+    margin-top: 4px;
+    border-radius: 14px;
+  }
+
+  .quote-note {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 680px) {
+  body,
+  main,
+  .site-header,
+  .clean-banner,
+  .banner-visual,
+  .about-cleaning,
+  .services-intro,
+  .service-grid-section,
+  .booking-process,
+  .before-after-section,
+  .why-choose-section,
+  .testimonial-section,
+  .faq-section,
+  .contact-booking,
+  .site-footer {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .site-header {
+    overflow: visible;
+  }
+
   .services-kicker,
   .process-kicker,
   .before-after-kicker,

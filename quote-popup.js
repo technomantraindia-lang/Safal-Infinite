@@ -103,9 +103,37 @@
       menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
     });
 
+    nav.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
+      const trigger = dropdown.querySelector(".nav-dropdown-trigger");
+      if (!trigger) return;
+
+      trigger.setAttribute("aria-expanded", "false");
+
+      trigger.addEventListener("click", (event) => {
+        if (!window.matchMedia("(max-width: 760px)").matches) return;
+
+        event.preventDefault();
+        const isOpen = dropdown.classList.toggle("is-dropdown-open");
+        trigger.setAttribute("aria-expanded", String(isOpen));
+
+        nav.querySelectorAll(".nav-dropdown").forEach((otherDropdown) => {
+          if (otherDropdown === dropdown) return;
+          otherDropdown.classList.remove("is-dropdown-open");
+          const otherTrigger = otherDropdown.querySelector(".nav-dropdown-trigger");
+          if (otherTrigger) otherTrigger.setAttribute("aria-expanded", "false");
+        });
+      });
+    });
+
     nav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
+        if (window.matchMedia("(max-width: 760px)").matches && link.classList.contains("nav-dropdown-trigger")) return;
         header.classList.remove("is-menu-open");
+        nav.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
+          dropdown.classList.remove("is-dropdown-open");
+          const trigger = dropdown.querySelector(".nav-dropdown-trigger");
+          if (trigger) trigger.setAttribute("aria-expanded", "false");
+        });
         menuButton.setAttribute("aria-expanded", "false");
         menuButton.setAttribute("aria-label", "Open navigation menu");
       });
