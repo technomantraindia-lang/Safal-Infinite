@@ -889,6 +889,7 @@
       document.querySelectorAll(".service-tile").forEach((card, index) => {
         const directions = ["reveal-left", "reveal-top", "reveal-right", "reveal-bottom"];
         card.classList.add("reveal-on-scroll", directions[index % directions.length]);
+        card.style.setProperty("--reveal-duration", "1.55s");
         card.style.setProperty("--reveal-delay", `${Math.min(index * 85, 420)}ms`);
       });
 

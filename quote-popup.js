@@ -69,6 +69,77 @@
     document.body.style.overflow = "";
   }
 
+  function addRevealAnimations(groups) {
+    groups.forEach(([selector, directions]) => {
+      document.querySelectorAll(selector).forEach((element, index) => {
+        const direction = Array.isArray(directions) ? directions[index % directions.length] : directions;
+        element.classList.add("reveal-on-scroll", direction);
+        element.style.setProperty("--reveal-duration", "1.55s");
+        element.style.setProperty("--reveal-delay", `${Math.min(index * 90, 420)}ms`);
+      });
+    });
+  }
+
+  function observeRevealAnimations() {
+    const revealElements = document.querySelectorAll(".reveal-on-scroll:not(.is-visible)");
+    if (!revealElements.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+      revealElements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+      return;
+    }
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.16,
+        rootMargin: "0px 0px -70px 0px",
+      }
+    );
+
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
+  }
+
+  if (document.querySelector(".service-page-hero")) {
+    addRevealAnimations([
+      [".service-page-hero > div", "reveal-bottom"],
+      [".service-page-intro .service-kicker", "reveal-top"],
+      [".service-page-intro h2", "reveal-bottom"],
+      [".service-page-card", ["reveal-left", "reveal-right", "reveal-bottom"]],
+      [".service-why > .service-kicker", "reveal-top"],
+      [".service-why > h2", "reveal-bottom"],
+      [".service-process article", ["reveal-left", "reveal-top", "reveal-right", "reveal-bottom"]],
+      [".service-cta > div", "reveal-left"],
+      [".service-cta .quote-button", "reveal-right"],
+    ]);
+  }
+
+  if (document.querySelector(".service-detail-section")) {
+    addRevealAnimations([
+      [".inner-page-hero > div", "reveal-bottom"],
+      [".service-detail-section > img", "reveal-left"],
+      [".service-detail-copy", "reveal-right"],
+      [".feature-list li", ["reveal-left", "reveal-right", "reveal-bottom"]],
+      [".detail-actions", "reveal-bottom"],
+      [".service-extra-head", "reveal-bottom"],
+      [".service-extra-grid article", ["reveal-left", "reveal-top", "reveal-right"]],
+      [".service-mini-cta", "reveal-bottom"],
+    ]);
+  }
+
+  observeRevealAnimations();
+
   function validateAustralianPhone(formElement) {
     const phoneInput = formElement.querySelector('input[name="phone"]');
     if (!phoneInput) return true;
