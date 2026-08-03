@@ -5011,7 +5011,7 @@ svg {
   stroke-width: 2.2;
 }
 
-.floating-whatsapp {
+.floating-call {
   position: fixed;
   right: 24px;
   bottom: 24px;
@@ -5021,23 +5021,27 @@ svg {
   width: 62px;
   height: 62px;
   border-radius: 50%;
-  background: #25d366;
+  background: #ef7d00;
   color: #ffffff;
-  box-shadow: 0 16px 34px rgba(37, 211, 102, 0.36), 0 8px 18px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 16px 34px rgba(239, 125, 0, 0.34), 0 8px 18px rgba(0, 0, 0, 0.18);
   transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
 }
 
-.floating-whatsapp:hover,
-.floating-whatsapp:focus-visible {
+.floating-call:hover,
+.floating-call:focus-visible {
   transform: translateY(-4px) scale(1.04);
-  background: #1ebe5d;
-  box-shadow: 0 20px 42px rgba(37, 211, 102, 0.42), 0 10px 22px rgba(0, 0, 0, 0.22);
+  background: #d96f00;
+  box-shadow: 0 20px 42px rgba(239, 125, 0, 0.42), 0 10px 22px rgba(0, 0, 0, 0.22);
 }
 
-.floating-whatsapp svg {
+.floating-call svg {
   width: 36px;
   height: 36px;
-  fill: currentColor;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 @media (max-width: 860px) {
@@ -5057,14 +5061,14 @@ svg {
     grid-template-columns: 1fr;
   }
 
-  .floating-whatsapp {
+  .floating-call {
     right: 16px;
     bottom: 16px;
     width: 54px;
     height: 54px;
   }
 
-  .floating-whatsapp svg {
+  .floating-call svg {
     width: 32px;
     height: 32px;
   }
