@@ -331,6 +331,10 @@ body {
   transition: transform 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
 }
 
+.about-small-link {
+  margin-top: 24px;
+}
+
 .about-small-link:hover,
 .about-team-head a:hover {
   transform: translateY(-3px);
