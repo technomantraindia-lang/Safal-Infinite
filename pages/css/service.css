@@ -1455,7 +1455,7 @@ body {
   background: linear-gradient(180deg, #f5dc04 0%, #fff4c9 54%, #fff8e7 100%);
   overflow: hidden;
   box-shadow: 0 20px 42px rgba(171, 112, 10, 0.13);
-  transition: box-shadow 0.28s ease, transform 0.28s ease;
+  transition: box-shadow 0.55s ease, transform 0.55s ease;
 }
 
 .service-page-card:hover {
@@ -1469,7 +1469,7 @@ body {
   display: block;
   object-fit: cover;
   border-radius: 24px;
-  transition: transform 0.45s ease;
+  transition: transform 0.75s ease;
 }
 
 .service-page-card:hover img {
@@ -1542,14 +1542,14 @@ body {
   inset: 0;
   background: linear-gradient(90deg, #ffad16 0%, #ffd600 100%);
   opacity: 0;
-  transition: opacity 0.24s ease;
+  transition: opacity 0.45s ease;
 }
 
 .services-page-grid article a span {
   position: relative;
   z-index: 1;
   color: #050505;
-  transition: transform 0.25s ease;
+  transition: transform 0.45s ease;
 }
 
 .services-page-grid article a svg {
@@ -1566,7 +1566,7 @@ body {
   stroke-width: 2.8;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: transform 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+  transition: transform 0.45s ease, background 0.45s ease, box-shadow 0.45s ease;
 }
 
 .services-page-grid article a:hover {

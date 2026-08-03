@@ -3724,11 +3724,6 @@ svg {
   margin: -1px 0 0;
   padding: 76px max(28px, calc((100% - 1170px) / 2)) 44px;
   background:
-    radial-gradient(circle at 98.5% 64%, #ffad16 0 43px, transparent 44px),
-    radial-gradient(circle at 93% 100%, #ffad16 0 112px, transparent 113px),
-    radial-gradient(circle at 53% 104%, #ffad16 0 142px, transparent 143px),
-    radial-gradient(circle at 43% 103%, #ffad16 0 92px, transparent 93px),
-    radial-gradient(circle at 10.5% 103%, #ffad16 0 118px, transparent 119px),
     linear-gradient(135deg, transparent 0 47%, rgba(255, 255, 255, 0.15) 47.2% 62%, transparent 62.2%),
     linear-gradient(180deg, transparent 0 28%, rgba(18, 34, 45, 0.92) 28% 100%),
     #fff6df;
@@ -3740,21 +3735,13 @@ svg {
   position: absolute;
   inset: 28% 0 0;
   background:
-    linear-gradient(rgba(18, 34, 45, 0.88), rgba(18, 34, 45, 0.88)),
-    url("assets/testimonial-cleaner.png") center / cover;
+    linear-gradient(rgba(18, 34, 45, 0.86), rgba(18, 34, 45, 0.86)),
+    url("assets/contact.png") right center / contain no-repeat;
   opacity: 0.95;
 }
 
 .contact-booking::after {
-  content: "";
-  position: absolute;
-  right: 52%;
-  top: 155px;
-  width: 22px;
-  height: 22px;
-  border: 2px solid #ffad16;
-  border-radius: 50%;
-  background: #ffffff;
+  content: none;
 }
 
 .appointment-card {
