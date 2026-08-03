@@ -4037,9 +4037,9 @@ svg {
   transform: translateY(38px);
   filter: blur(8px);
   transition:
-    opacity 0.78s ease,
-    transform 0.78s cubic-bezier(0.2, 0.72, 0.2, 1),
-    filter 0.78s ease;
+    opacity var(--reveal-duration, 0.78s) ease,
+    transform var(--reveal-duration, 0.78s) cubic-bezier(0.2, 0.72, 0.2, 1),
+    filter var(--reveal-duration, 0.78s) ease;
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }

@@ -231,7 +231,62 @@
         </div>
       </div>
     </footer>
+    <script>
+      const revealItems = [
+        [".inner-page-hero > div", "reveal-bottom"],
+        [".work-steps-section > .service-kicker", "reveal-top"],
+        [".work-steps-section > h2", "reveal-bottom"],
+        [".work-step-grid article", "reveal-left"],
+        [".work-benefits-section > .service-kicker", "reveal-top"],
+        [".work-benefits-section > h2", "reveal-bottom"],
+        [".work-benefit-grid article", "reveal-right"],
+        [".work-detail-media", "reveal-left"],
+        [".work-detail-section > div:last-child", "reveal-right"],
+        [".work-detail-list li", "reveal-bottom"],
+        [".work-cta img", "reveal-left"],
+        [".work-cta > div", "reveal-bottom"],
+        [".work-cta .quote-button", "reveal-right"],
+      ];
+
+      revealItems.forEach(([selector, direction]) => {
+        document.querySelectorAll(selector).forEach((element, index) => {
+          const directionClass = selector === ".work-step-grid article"
+            ? ["reveal-left", "reveal-top", "reveal-right"][index % 3]
+            : selector === ".work-benefit-grid article"
+              ? ["reveal-left", "reveal-bottom", "reveal-top", "reveal-right"][index % 4]
+              : direction;
+
+          element.classList.add("reveal-on-scroll", directionClass);
+          element.style.setProperty("--reveal-duration", "1.55s");
+          element.style.setProperty("--reveal-delay", `${Math.min(index * 90, 420)}ms`);
+        });
+      });
+
+      if (!("IntersectionObserver" in window)) {
+        document.querySelectorAll(".reveal-on-scroll").forEach((element) => {
+          element.classList.add("is-visible");
+        });
+      } else {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            });
+          },
+          {
+            threshold: 0.16,
+            rootMargin: "0px 0px -70px 0px",
+          }
+        );
+
+        document.querySelectorAll(".reveal-on-scroll").forEach((element) => {
+          revealObserver.observe(element);
+        });
+      }
+    </script>
     <script src="../quote-popup.js"></script>
   </body>
 </html>
-
