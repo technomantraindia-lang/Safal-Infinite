@@ -138,6 +138,24 @@
     ]);
   }
 
+  if (document.querySelector(".contact-page-section")) {
+    addRevealAnimations([
+      [".contact-hero-content", "reveal-bottom"],
+      [".contact-cards article", ["reveal-left", "reveal-top", "reveal-right", "reveal-bottom"]],
+      [".contact-page-form", "reveal-left"],
+      [".contact-page-form .form-row", ["reveal-left", "reveal-right"]],
+      [".contact-page-form > label", "reveal-bottom"],
+      [".contact-page-form button", "reveal-bottom"],
+      [".visit-panel", "reveal-right"],
+      [".visit-list > div", ["reveal-left", "reveal-right", "reveal-bottom"]],
+      [".map-content", "reveal-left"],
+      [".map-frame", "reveal-right"],
+      [".contact-cta img", "reveal-left"],
+      [".contact-cta > div", "reveal-bottom"],
+      [".contact-cta .quote-button", "reveal-right"],
+    ]);
+  }
+
   observeRevealAnimations();
 
   function validateAustralianPhone(formElement) {
