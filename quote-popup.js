@@ -69,6 +69,34 @@
     document.body.style.overflow = "";
   }
 
+  document.querySelectorAll(".site-header").forEach((header) => {
+    const nav = header.querySelector(".main-nav");
+    const brand = header.querySelector(".brand");
+    if (!nav || !brand || header.querySelector(".mobile-menu-toggle")) return;
+
+    const menuButton = document.createElement("button");
+    menuButton.className = "mobile-menu-toggle";
+    menuButton.type = "button";
+    menuButton.setAttribute("aria-label", "Open navigation menu");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.innerHTML = '<span>Menu</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></svg>';
+    brand.insertAdjacentElement("afterend", menuButton);
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = header.classList.toggle("is-menu-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        header.classList.remove("is-menu-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+  });
+
   function addRevealAnimations(groups) {
     groups.forEach(([selector, directions]) => {
       document.querySelectorAll(selector).forEach((element, index) => {
