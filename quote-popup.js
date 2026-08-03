@@ -79,7 +79,7 @@
     menuButton.type = "button";
     menuButton.setAttribute("aria-label", "Open navigation menu");
     menuButton.setAttribute("aria-expanded", "false");
-    menuButton.innerHTML = '<span>Menu</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></svg>';
+    menuButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></svg>';
     brand.insertAdjacentElement("afterend", menuButton);
 
     menuButton.addEventListener("click", () => {
@@ -95,6 +95,24 @@
         menuButton.setAttribute("aria-label", "Open navigation menu");
       });
     });
+  });
+
+  document.querySelectorAll(".footer-brand").forEach((footerBrand) => {
+    if (footerBrand.querySelector(".footer-mobile-actions")) return;
+
+    const actions = document.createElement("div");
+    actions.className = "footer-mobile-actions";
+    actions.innerHTML = `
+      <a class="footer-call-action" href="tel:+61406858679">${icons.phone}<span>Call Now</span></a>
+      <a class="footer-whatsapp-action" href="https://wa.me/61406858679">${icons.message}<span>WhatsApp</span></a>
+    `;
+
+    const social = footerBrand.querySelector(".footer-social");
+    if (social) {
+      social.insertAdjacentElement("beforebegin", actions);
+    } else {
+      footerBrand.appendChild(actions);
+    }
   });
 
   function addRevealAnimations(groups) {
