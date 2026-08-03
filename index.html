@@ -95,7 +95,7 @@
               </div>
             </article>
             <article class="service-card">
-              <img src="assets/service-office.png" alt="Move out end of lease cleaning services" />
+              <img src="assets/service-move-out-cleaning.png" alt="Move out and end of lease cleaning services" />
               <div>
                 <h2>Move Out / End of Lease Cleaning</h2>
                 <p>Ready for handover</p>
@@ -144,7 +144,7 @@
               </div>
             </article>
             <article class="service-card" aria-hidden="true">
-              <img src="assets/service-office.png" alt="" />
+              <img src="assets/service-move-out-cleaning.png" alt="" />
               <div>
                 <h2>Move Out / End of Lease Cleaning</h2>
                 <p>Ready for handover</p>
@@ -303,7 +303,7 @@
           </article>
 
           <article class="service-tile">
-            <img src="assets/service-office.png" alt="Move out and end of lease cleaning services" />
+            <img src="assets/service-move-out-cleaning.png" alt="Move out and end of lease cleaning services" />
             <div class="service-tile-body">
               <span class="service-icon-badge" aria-hidden="true">
                 <svg viewBox="0 0 32 32">
@@ -937,12 +937,17 @@
         [".process-button", "reveal-bottom"],
         [".why-card", "reveal-bottom"],
         [".testimonial-photo", "reveal-left"],
+        [".faq-copy .faq-kicker", "reveal-top"],
+        [".faq-copy h2", "reveal-left"],
+        [".faq-copy > p:not(.faq-kicker)", "reveal-left"],
+        [".faq-button", "reveal-bottom"],
         [".faq-list details", "reveal-right"],
       ];
 
       revealItems.forEach(([selector, direction]) => {
         document.querySelectorAll(selector).forEach((element, index) => {
           element.classList.add("reveal-on-scroll", direction);
+          element.style.setProperty("--reveal-duration", "1.55s");
           element.style.setProperty("--reveal-delay", `${Math.min(index * 90, 360)}ms`);
         });
       });

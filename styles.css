@@ -3995,8 +3995,8 @@ svg {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: #ffffff;
   color: #ffffff;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
 }
 
 .footer-social a svg {
@@ -4008,15 +4008,26 @@ svg {
 }
 
 .footer-social .facebook {
-  color: #1877f2;
+  background: #1877f2;
 }
 
 .footer-social .instagram {
-  color: #e4405f;
+  background:
+    radial-gradient(circle at 30% 105%, #fdf497 0 12%, #fdf497 13%, transparent 28%),
+    radial-gradient(circle at 30% 105%, #fd5949 0 36%, #d6249f 62%, #285aeb 100%);
 }
 
 .footer-social .youtube {
-  color: #ff0000;
+  background: #ff0000;
+}
+
+.footer-social .instagram svg {
+  fill: none;
+}
+
+.footer-social .youtube svg path:last-child {
+  fill: #ff0000;
+  stroke: #ff0000;
 }
 
 .footer-column h2 {
