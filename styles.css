@@ -2820,36 +2820,16 @@ svg {
   display: block;
   width: 100%;
   padding: 96px 28px 112px;
-  background:
-    radial-gradient(circle at 8% 68%, rgba(255, 173, 22, 0.16) 0 28px, transparent 29px),
-    radial-gradient(circle at 96% 58%, rgba(255, 173, 22, 0.13) 0 66px, transparent 67px),
-    radial-gradient(circle at 30% 100%, rgba(255, 213, 0, 0.12) 0 130px, transparent 131px),
-    linear-gradient(90deg, rgba(246, 249, 251, 0.95), rgba(237, 243, 246, 0.94));
+  background: #fffaf0;
   overflow: hidden;
 }
 
 .why-choose-section::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: min(44vw, 760px);
-  background:
-    linear-gradient(90deg, rgba(246, 249, 251, 0.86), rgba(246, 249, 251, 0.68)),
-    url("assets/why-choose-cleaner.png") center / cover no-repeat;
-  opacity: 0.22;
-  pointer-events: none;
+  content: none;
 }
 
 .why-choose-section::after {
-  content: "";
-  position: absolute;
-  right: -110px;
-  top: -100px;
-  width: 320px;
-  height: 320px;
-  border: 28px solid rgba(255, 173, 22, 0.08);
-  border-radius: 50%;
-  pointer-events: none;
+  content: none;
 }
 
 .why-choose-section .why-content {
@@ -2892,43 +2872,44 @@ svg {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(3, minmax(260px, 360px));
+  grid-template-columns: repeat(5, minmax(180px, 1fr));
   justify-content: center;
-  gap: 42px;
-  width: min(1200px, 100%);
+  gap: 38px;
+  width: min(1380px, 100%);
   margin: 0 auto;
 }
 
 .why-card {
   position: relative;
-  min-height: 300px;
-  padding: 38px 38px 92px;
+  min-height: 270px;
+  padding: 34px 28px 88px;
+  border: 1px solid rgba(255, 173, 22, 0.12);
   background: #ffffff;
-  box-shadow: 38px -14px 0 rgba(255, 255, 255, 0.58), 0 22px 38px rgba(0, 25, 47, 0.06);
+  box-shadow: 38px -14px 0 rgba(255, 245, 218, 0.88), 0 22px 38px rgba(0, 25, 47, 0.06);
   transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
 }
 
 .why-card h3 {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   color: #070b11;
-  font-size: clamp(24px, 1.8vw, 30px);
+  font-size: clamp(21px, 1.45vw, 26px);
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: 0;
 }
 
 .why-card p {
-  max-width: 250px;
+  max-width: 210px;
   margin: 0;
   color: #7a838d;
-  font-size: 17px;
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.45;
   font-weight: 500;
 }
 
 .why-card-icon {
   position: absolute;
-  left: 38px;
+  left: 28px;
   bottom: -38px;
   display: grid;
   place-items: center;
