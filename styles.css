@@ -4067,10 +4067,11 @@ svg {
 .reveal-on-scroll.is-visible {
   opacity: 1;
   filter: blur(0);
+  transform: translate(0, 0) scale(1);
 }
 
-.reveal-on-scroll.is-visible:not(:hover) {
-  transform: translate(0, 0) scale(1);
+.service-tile.reveal-on-scroll.is-visible:hover {
+  transform: translateY(-8px);
 }
 
 .about-left,

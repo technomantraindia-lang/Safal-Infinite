@@ -129,8 +129,8 @@
 
           <div class="form-row">
             <label>
-              <span>Phone</span>
-              <input type="tel" name="phone" placeholder="e.g. (1) 23 4567 891" />
+              <span>Phone*</span>
+              <input type="tel" name="phone" placeholder="e.g. +61 406 858 679" pattern="^\+61[\d\s()\-]{6,}$" title="Please enter an Australian number starting with +61" required />
             </label>
             <label>
               <span>Subject</span>
@@ -305,7 +305,6 @@
     <script src="../quote-popup.js"></script>
   </body>
 </html>
-
 
 
 

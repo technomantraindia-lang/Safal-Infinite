@@ -41,7 +41,7 @@
         <form class="quote-form">
           ${field("user", '<input type="text" name="name" placeholder="Full Name" required />')}
           ${field("mail", '<input type="email" name="email" placeholder="Email Address" required />')}
-          ${field("phone", '<input type="tel" name="phone" placeholder="Phone Number" required />')}
+          ${field("phone", '<input type="tel" name="phone" placeholder="e.g. +61 406 858 679" pattern="^\\+61[\\d\\s()\\-]{6,}$" title="Please enter an Australian number starting with +61" required />')}
           ${field("home", '<input type="text" name="suburb" placeholder="Suburb / Location" />')}
           ${field("briefcase", '<select name="service" required><option value="">Select Cleaning Service</option><option>Regular Cleaning</option><option>One Off / Spring Cleaning</option><option>Move Out / End of Lease Cleaning</option><option>Carpet & Upholstery Cleaning</option><option>Window Cleaning</option><option>Oven & Rangehood Cleaning</option><option>Office Cleaning Services</option></select>')}
           ${field("list", '<input type="text" name="property" placeholder="Property Type / Size" />')}
@@ -69,6 +69,28 @@
     document.body.style.overflow = "";
   }
 
+  function validateAustralianPhone(formElement) {
+    const phoneInput = formElement.querySelector('input[name="phone"]');
+    if (!phoneInput) return true;
+
+    const value = phoneInput.value.trim();
+    const isValid = /^\+61[\d\s()-]{6,}$/.test(value);
+    phoneInput.setCustomValidity(isValid ? "" : "Please enter an Australian number starting with +61.");
+
+    if (!isValid) {
+      phoneInput.reportValidity();
+      phoneInput.focus();
+    }
+
+    return isValid;
+  }
+
+  document.querySelectorAll('input[name="phone"]').forEach((phoneInput) => {
+    phoneInput.addEventListener("input", () => {
+      phoneInput.setCustomValidity("");
+    });
+  });
+
   document.querySelectorAll(".quote-button").forEach((button) => button.addEventListener("click", openModal));
   modal.addEventListener("click", (event) => {
     if (event.target === modal) closeModal();
@@ -77,9 +99,21 @@
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
   });
+  document.querySelectorAll(".contact-page-form").forEach((contactForm) => {
+    contactForm.addEventListener("submit", (event) => {
+      if (!validateAustralianPhone(contactForm)) {
+        event.preventDefault();
+      }
+    });
+  });
+
   form.addEventListener("submit", (event) => {
+    if (!validateAustralianPhone(form)) {
+      event.preventDefault();
+      return;
+    }
+
     event.preventDefault();
     closeModal();
   });
 })();
-
