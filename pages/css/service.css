@@ -266,6 +266,10 @@ body {
   font-weight: 600;
 }
 
+.about-story-copy > p:not(.service-kicker) + p:not(.service-kicker) {
+  margin-top: 14px;
+}
+
 .about-story-points {
   display: grid;
   gap: 14px;
