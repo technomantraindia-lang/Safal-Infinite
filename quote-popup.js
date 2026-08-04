@@ -91,6 +91,14 @@
     menuButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></svg>';
     brand.insertAdjacentElement("afterend", menuButton);
 
+    if (!nav.querySelector(".mobile-nav-quote")) {
+      const quoteLink = document.createElement("a");
+      quoteLink.className = "mobile-nav-quote quote-button";
+      quoteLink.href = "#quote";
+      quoteLink.textContent = "Request a Quote";
+      nav.appendChild(quoteLink);
+    }
+
     menuButton.addEventListener("click", () => {
       const isOpen = header.classList.toggle("is-menu-open");
       menuButton.setAttribute("aria-expanded", String(isOpen));
@@ -104,7 +112,7 @@
       trigger.setAttribute("aria-expanded", "false");
 
       trigger.addEventListener("click", (event) => {
-        if (!window.matchMedia("(max-width: 760px)").matches) return;
+        if (!window.matchMedia("(max-width: 1080px)").matches) return;
 
         event.preventDefault();
         const isOpen = dropdown.classList.toggle("is-dropdown-open");
@@ -121,7 +129,7 @@
 
     nav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        if (window.matchMedia("(max-width: 760px)").matches && link.classList.contains("nav-dropdown-trigger")) return;
+        if (window.matchMedia("(max-width: 1080px)").matches && link.classList.contains("nav-dropdown-trigger")) return;
         header.classList.remove("is-menu-open");
         nav.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
           dropdown.classList.remove("is-dropdown-open");
@@ -263,7 +271,11 @@
     });
   });
 
-  document.querySelectorAll(".quote-button").forEach((button) => button.addEventListener("click", openModal));
+  document.addEventListener("click", (event) => {
+    const quoteButton = event.target.closest(".quote-button");
+    if (!quoteButton) return;
+    openModal(event);
+  });
   modal.addEventListener("click", (event) => {
     if (event.target === modal) closeModal();
   });

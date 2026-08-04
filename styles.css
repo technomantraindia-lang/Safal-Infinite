@@ -42,11 +42,11 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
+  gap: clamp(14px, 2.1vw, 30px);
   width: 100%;
   height: 94px;
   margin: 0;
-  padding: 0 8.2%;
+  padding: 0 clamp(20px, 6vw, 8.2%);
 }
 
 .brand {
@@ -87,10 +87,14 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 34px;
+  gap: clamp(16px, 2.2vw, 34px);
   flex: 1 1 auto;
-  font-size: 16px;
+  font-size: clamp(14px, 1.05vw, 16px);
   font-weight: 900;
+}
+
+.mobile-nav-quote {
+  display: none;
 }
 
 .main-nav a {
@@ -221,7 +225,7 @@ a {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: clamp(10px, 1.25vw, 18px);
   flex: 0 0 auto;
 }
 
@@ -540,7 +544,7 @@ svg {
   .site-header {
     flex-wrap: wrap;
     height: auto;
-    padding: 24px 24px 18px;
+    padding: 20px 24px 16px;
   }
 
   .main-nav {
@@ -554,6 +558,182 @@ svg {
   .hero-card {
     width: min(610px, calc(100% - 70px));
     margin-left: 36px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .site-header {
+    position: relative;
+    z-index: 50;
+    flex-wrap: nowrap;
+    height: 78px;
+    gap: 14px;
+    padding: 12px 20px;
+    background: #ffffff;
+    box-shadow: 0 10px 26px rgba(9, 20, 34, 0.08);
+    overflow: visible;
+  }
+
+  .brand img {
+    max-height: 48px;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
+    min-height: 46px;
+    margin-left: auto;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .main-nav {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    top: calc(100% + 10px);
+    z-index: 55;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: auto;
+    max-height: calc(100vh - 112px);
+    max-height: calc(100dvh - 112px);
+    padding: 10px;
+    border: 1px solid rgba(255, 173, 22, 0.18);
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 24px 54px rgba(9, 20, 34, 0.18);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    overflow: auto;
+    transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease;
+    pointer-events: none;
+  }
+
+  .site-header.is-menu-open .main-nav {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .main-nav a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    white-space: normal;
+  }
+
+  .main-nav > a,
+  .main-nav > .nav-dropdown {
+    margin: 0 0 6px;
+  }
+
+  .main-nav > a:last-child,
+  .main-nav > .nav-dropdown:last-child {
+    margin-bottom: 0;
+  }
+
+  .main-nav a::before {
+    display: none;
+  }
+
+  .main-nav a:hover,
+  .main-nav a:focus-visible,
+  .main-nav .active {
+    background: #fff3ce;
+    color: #ff8a00;
+  }
+
+  .nav-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin: 0 0 6px;
+    padding: 0;
+  }
+
+  .nav-dropdown::after {
+    display: none;
+  }
+
+  .nav-dropdown-trigger {
+    justify-content: space-between;
+  }
+
+  .nav-dropdown-trigger::after {
+    transform: rotate(45deg);
+  }
+
+  .dropdown-menu {
+    position: static;
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 1px solid rgba(255, 173, 22, 0.18);
+    border-radius: 12px;
+    background: #fffaf0;
+    box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: none;
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height 0.24s ease, opacity 0.2s ease, visibility 0.2s ease, margin 0.2s ease, padding 0.2s ease;
+  }
+
+  .nav-dropdown.is-dropdown-open .dropdown-menu {
+    max-height: 520px;
+    margin: 6px 0 2px;
+    padding: 8px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-dropdown.is-dropdown-open .nav-dropdown-trigger::after {
+    transform: rotate(225deg) translate(-2px, -2px);
+  }
+
+  .dropdown-menu a {
+    min-height: 38px;
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 800;
+    white-space: normal;
+  }
+
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu,
+  .nav-dropdown.is-dropdown-open .dropdown-menu {
+    left: auto;
+    top: auto;
+    transform: none;
+  }
+
+  .header-actions {
+    display: none;
+  }
+
+  .mobile-nav-quote {
+    display: flex;
+    width: 100%;
+    min-height: 46px;
+    margin-top: 4px;
+    border-radius: 10px;
   }
 }
 
@@ -1081,7 +1261,22 @@ svg {
   border-radius: 18px;
   background: #ffffff;
   box-shadow: inset 0 0 0 1px rgba(63, 148, 71, 0.1), 0 10px 24px rgba(24, 40, 28, 0.06);
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
   overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.service-card:hover,
+.service-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: inset 0 0 0 1px rgba(63, 148, 71, 0.16), 0 16px 30px rgba(24, 40, 28, 0.1);
+}
+
+.service-card:focus-visible {
+  outline: 3px solid rgba(47, 139, 59, 0.35);
+  outline-offset: 4px;
 }
 
 .service-card img {
@@ -1816,6 +2011,7 @@ svg {
 }
 
 .marquee-strip {
+  display: none;
   width: 100%;
   overflow: hidden;
   border-top: 20px solid #ffad16;
@@ -4671,9 +4867,11 @@ svg {
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 16px;
   background: rgba(7, 23, 44, 0.72);
   backdrop-filter: blur(7px);
+  box-sizing: border-box;
+  overflow: auto;
 }
 
 .quote-modal.is-open {
@@ -4683,25 +4881,31 @@ svg {
 .quote-modal-panel {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(280px, 0.78fr) minmax(420px, 1.22fr);
-  width: min(1080px, 100%);
-  max-height: calc(100vh - 48px);
+  grid-template-columns: minmax(270px, 0.76fr) minmax(0, 1.24fr);
+  width: min(1040px, calc(100vw - 32px));
+  max-height: min(760px, calc(100vh - 32px));
+  max-height: min(760px, calc(100dvh - 32px));
+  min-height: 0;
   border: 2px solid #ffad16;
   border-radius: 24px;
   background: #fffaf0;
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .quote-modal-side {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   padding: 30px 26px;
   background:
     radial-gradient(circle at 16% 12%, rgba(255, 213, 0, 0.2), transparent 27%),
     radial-gradient(circle at 88% 64%, rgba(255, 173, 22, 0.14), transparent 28%),
     linear-gradient(160deg, #07172c 0%, #0b2139 54%, #06111f 100%);
   color: #ffffff;
-  overflow: hidden;
+  overflow: hidden auto;
 }
 
 .quote-modal-side::before {
@@ -4723,6 +4927,7 @@ svg {
 .quote-modal-logo {
   display: grid;
   place-items: center;
+  flex: 0 0 auto;
   width: 170px;
   height: 92px;
   margin: 0 auto 22px;
@@ -4739,12 +4944,14 @@ svg {
 }
 
 .quote-modal-photo {
+  flex: 0 0 auto;
   width: 100%;
   height: 192px;
   margin: 0 0 24px;
   border: 5px solid rgba(255, 255, 255, 0.92);
   border-radius: 20px;
   object-fit: cover;
+  object-position: center 28%;
   box-shadow: 0 20px 42px rgba(0, 0, 0, 0.24);
 }
 
@@ -4816,8 +5023,10 @@ svg {
 
 .quote-modal-main {
   position: relative;
+  min-height: 0;
   padding: 38px 34px 34px;
   overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .quote-modal-close {
@@ -5044,6 +5253,98 @@ svg {
   stroke-linejoin: round;
 }
 
+@media (max-width: 1180px), (max-height: 820px) {
+  .quote-modal-panel {
+    grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.15fr);
+    width: min(980px, calc(100vw - 28px));
+    max-height: calc(100vh - 28px);
+    max-height: calc(100dvh - 28px);
+    border-radius: 22px;
+  }
+
+  .quote-modal-side {
+    padding: 18px 18px;
+  }
+
+  .quote-modal-logo {
+    width: 136px;
+    height: 66px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+  }
+
+  .quote-modal-logo img {
+    max-width: 112px;
+    max-height: 48px;
+  }
+
+  .quote-modal-photo {
+    height: 138px;
+    margin-bottom: 12px;
+    border-width: 4px;
+    border-radius: 16px;
+  }
+
+  .quote-modal-side small {
+    font-size: 11px;
+  }
+
+  .quote-modal-side h2 {
+    margin: 10px 0 12px;
+    font-size: 25px;
+  }
+
+  .quote-contact-card {
+    grid-template-columns: 38px 1fr;
+    gap: 10px;
+    margin-top: 8px;
+    padding: 9px;
+  }
+
+  .quote-contact-card span {
+    width: 38px;
+    height: 38px;
+  }
+
+  .quote-contact-card a,
+  .quote-contact-card p {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .quote-modal-main {
+    padding: 28px 26px 24px;
+  }
+
+  .quote-modal-main h2 {
+    font-size: clamp(34px, 4vw, 46px);
+  }
+
+  .quote-modal-main > p {
+    margin-bottom: 18px;
+    font-size: 14px;
+  }
+
+  .quote-form {
+    gap: 12px;
+  }
+
+  .quote-field,
+  .quote-field input,
+  .quote-field select {
+    min-height: 54px;
+  }
+
+  .quote-field textarea {
+    min-height: 104px;
+  }
+
+  .quote-submit {
+    min-height: 54px;
+    margin-top: 4px;
+  }
+}
+
 @media (max-width: 860px) {
   .quote-modal {
     padding: 14px;
@@ -5096,6 +5397,7 @@ svg {
 
   .quote-modal-panel {
     width: calc(100vw - 20px);
+    height: auto;
     max-height: none;
     margin: 0;
     border-width: 1px;
