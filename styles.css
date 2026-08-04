@@ -93,7 +93,7 @@ a {
   font-weight: 900;
 }
 
-.mobile-nav-quote {
+.main-nav .mobile-nav-quote {
   display: none;
 }
 
@@ -728,7 +728,7 @@ svg {
     display: none;
   }
 
-  .mobile-nav-quote {
+  .main-nav .mobile-nav-quote {
     display: flex;
     width: 100%;
     min-height: 46px;

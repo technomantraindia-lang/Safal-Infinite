@@ -1369,7 +1369,7 @@ body {
 }
 
 .service-page-hero h1 span {
-  display: inline;
+  display: block;
 }
 
 .service-page-hero p:not(.service-kicker) {
