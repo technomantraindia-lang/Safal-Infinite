@@ -40,7 +40,7 @@
         <small>Trusted Canberra Cleaners</small>
         <h2>Home, Office &amp; Deep Cleaning Care</h2>
         <div class="quote-contact-card"><span>${icons.phone}</span><div><strong>Call Us</strong><a href="tel:+61406858679">+61 406 858 679</a></div></div>
-        <div class="quote-contact-card"><span>${icons.mail}</span><div><strong>Email Us</strong><a href="mailto:hello@safalinfinite.com.au">hello@safalinfinite.com.au</a></div></div>
+        <div class="quote-contact-card"><span>${icons.mail}</span><div><strong>Email Us</strong><a href="mailto:Safalinfinite@gmail.com">Safalinfinite@gmail.com</a></div></div>
         <div class="quote-contact-card"><span>${icons.home}</span><div><strong>Canberra Service</strong><p>Florey, Canberra 2615</p></div></div>
       </aside>
       <section class="quote-modal-main">
