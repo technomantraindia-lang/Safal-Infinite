@@ -1424,7 +1424,7 @@ svg {
   }
 
   .service-strip {
-    width: min(650px, calc(100% - 48px));
+    width: min(980px, calc(100% - 220px));
   }
 
   .service-track {
@@ -1453,6 +1453,12 @@ svg {
 
   .slider-arrow {
     bottom: 36px;
+  }
+}
+
+@media (max-width: 900px) {
+  .service-strip {
+    width: min(650px, calc(100% - 48px));
   }
 }
 
@@ -1971,10 +1977,13 @@ svg {
   }
 }
 
-@media (max-width: 1220px) {
+@media (max-width: 1380px) {
   .about-cleaning {
-    grid-template-columns: 320px 1fr;
-    gap: 42px;
+    grid-template-columns: minmax(300px, 360px) minmax(0, 520px);
+    justify-content: center;
+    gap: 52px;
+    padding-left: max(28px, calc((100% - 1120px) / 2));
+    padding-right: max(28px, calc((100% - 1120px) / 2));
   }
 
   .about-right {

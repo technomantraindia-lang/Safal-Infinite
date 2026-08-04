@@ -2559,3 +2559,26 @@ body {
     margin-top: 20px;
   }
 }
+
+@media (max-width: 1120px) {
+  .inner-page-hero[style*="aboutbanera"],
+  .inner-page-hero[style*="howiworkbanera"] {
+    min-height: 520px;
+    background:
+      linear-gradient(90deg, rgba(4, 20, 39, 0.94) 0%, rgba(4, 20, 39, 0.72) 52%, rgba(4, 20, 39, 0.2) 100%),
+      var(--hero-image) right center / auto 100% no-repeat,
+      #07172c;
+  }
+}
+
+@media (max-width: 700px) {
+  .inner-page-hero[style*="aboutbanera"],
+  .inner-page-hero[style*="howiworkbanera"] {
+    min-height: 520px;
+    padding: 64px 20px 180px;
+    background:
+      linear-gradient(180deg, rgba(4, 20, 39, 0.98) 0%, rgba(4, 20, 39, 0.92) 58%, rgba(4, 20, 39, 0.48) 100%),
+      var(--hero-image) right center / auto 100% no-repeat,
+      #07172c;
+  }
+}
