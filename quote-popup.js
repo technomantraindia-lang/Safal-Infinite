@@ -278,12 +278,41 @@
     return status;
   }
 
+  const toast = document.createElement("div");
+  toast.className = "side-toast";
+  toast.setAttribute("role", "status");
+  toast.setAttribute("aria-live", "polite");
+  toast.innerHTML = `
+    <div class="side-toast-icon">✓</div>
+    <div class="side-toast-copy">
+      <strong>Thank you!</strong>
+      <p>Your quote request is on its way.</p>
+    </div>
+  `;
+  document.body.appendChild(toast);
+  let toastTimer = null;
+
   function showFormStatus(form, message, isSuccess) {
     const status = getFormStatusNode(form);
     status.textContent = message;
     status.style.color = isSuccess ? "#147d38" : "#b02a37";
     status.style.marginTop = "1rem";
     status.style.fontWeight = "600";
+  }
+
+  function showSideToast(message) {
+    const toastCopy = toast.querySelector(".side-toast-copy p");
+    if (toastCopy) toastCopy.textContent = message;
+    toast.classList.add("is-visible");
+
+    if (toastTimer) {
+      clearTimeout(toastTimer);
+    }
+
+    toastTimer = window.setTimeout(() => {
+      toast.classList.remove("is-visible");
+      toastTimer = null;
+    }, 5000);
   }
 
   function setDefaultSubject(formData) {
@@ -321,7 +350,12 @@
       }
 
       form.reset();
-      showFormStatus(form, "Thank you! Your enquiry has been sent.", true);
+      if (form.classList.contains("quote-form")) {
+        closeModal();
+        showSideToast("Your quote request has been sent. We’ll be in touch soon.");
+      } else {
+        showFormStatus(form, "Thank you! Your enquiry has been sent.", true);
+      }
     } catch (error) {
       showFormStatus(form, error.message || "Something went wrong. Please try again later.", false);
     } finally {
