@@ -4234,6 +4234,49 @@ svg {
   }
 }
 
+.contact-page-form {
+  display: grid;
+  gap: 18px;
+}
+
+.contact-page-form label {
+  display: block;
+}
+
+.contact-page-form input,
+.contact-page-form select,
+.contact-page-form textarea {
+  width: 100%;
+  min-height: 64px;
+  border: 1px solid rgba(16, 31, 43, 0.12);
+  border-radius: 10px;
+  background: #ffffff;
+  color: #1b2435;
+  font: inherit;
+  font-size: 16px;
+  padding: 18px 20px;
+  outline: 2px solid transparent;
+  transition: outline-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-page-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-page-form select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.contact-page-form input:focus,
+.contact-page-form select:focus,
+.contact-page-form textarea:focus {
+  outline-color: rgba(255, 173, 22, 0.45);
+  box-shadow: 0 12px 28px rgba(255, 173, 22, 0.12);
+}
+
 .contact-booking {
   position: relative;
   display: block;

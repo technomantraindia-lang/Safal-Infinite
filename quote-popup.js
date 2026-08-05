@@ -249,6 +249,9 @@
 
   observeRevealAnimations();
 
+  const WEB3FORMS_ACCESS_KEY = "d559df42-4ff1-4bd4-bbe5-0594c936eb12";
+  const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+
   function validateAustralianPhone(formElement) {
     const phoneInput = formElement.querySelector('input[name="phone"]');
     if (!phoneInput) return true;
@@ -265,10 +268,89 @@
     return isValid;
   }
 
+  function getFormStatusNode(form) {
+    let status = form.querySelector(".form-status");
+    if (!status) {
+      status = document.createElement("div");
+      status.className = "form-status";
+      form.appendChild(status);
+    }
+    return status;
+  }
+
+  function showFormStatus(form, message, isSuccess) {
+    const status = getFormStatusNode(form);
+    status.textContent = message;
+    status.style.color = isSuccess ? "#147d38" : "#b02a37";
+    status.style.marginTop = "1rem";
+    status.style.fontWeight = "600";
+  }
+
+  function setDefaultSubject(formData) {
+    if (formData.get("subject")) return;
+
+    const service = formData.get("service");
+    if (service) {
+      formData.set("subject", `Cleaning enquiry: ${service}`);
+      return;
+    }
+
+    formData.set("subject", "Website enquiry");
+  }
+
+  async function submitWeb3Forms(form) {
+    const submitButton = form.querySelector("button[type='submit']");
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.setAttribute("aria-busy", "true");
+    }
+
+    try {
+      const formData = new FormData(form);
+      formData.set("access_key", WEB3FORMS_ACCESS_KEY);
+      setDefaultSubject(formData);
+
+      const response = await fetch(WEB3FORMS_URL, {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+      if (!response.ok || result.success === false) {
+        throw new Error(result.message || "Unable to send your enquiry. Please try again.");
+      }
+
+      form.reset();
+      showFormStatus(form, "Thank you! Your enquiry has been sent.", true);
+    } catch (error) {
+      showFormStatus(form, error.message || "Something went wrong. Please try again later.", false);
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.removeAttribute("aria-busy");
+      }
+    }
+  }
+
   document.querySelectorAll('input[name="phone"]').forEach((phoneInput) => {
     phoneInput.addEventListener("input", () => {
       phoneInput.setCustomValidity("");
     });
+  });
+
+  function handleSubmit(event) {
+    const form = event.currentTarget;
+    if (!validateAustralianPhone(form)) {
+      event.preventDefault();
+      return;
+    }
+
+    event.preventDefault();
+    submitWeb3Forms(form);
+  }
+
+  document.querySelectorAll(".contact-page-form, .booking-form, .quote-form").forEach((formElement) => {
+    formElement.addEventListener("submit", handleSubmit);
   });
 
   document.addEventListener("click", (event) => {
@@ -282,22 +364,5 @@
   closeButton.addEventListener("click", closeModal);
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
-  });
-  document.querySelectorAll(".contact-page-form").forEach((contactForm) => {
-    contactForm.addEventListener("submit", (event) => {
-      if (!validateAustralianPhone(contactForm)) {
-        event.preventDefault();
-      }
-    });
-  });
-
-  form.addEventListener("submit", (event) => {
-    if (!validateAustralianPhone(form)) {
-      event.preventDefault();
-      return;
-    }
-
-    event.preventDefault();
-    closeModal();
   });
 })();
